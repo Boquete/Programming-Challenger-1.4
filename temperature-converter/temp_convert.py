@@ -2,33 +2,41 @@ temperature = int(input("What's the temperature to convert: "))
 unit = input("What unit is it? (fahrenheit, celsius or kelvin)")
 
 
-def user_input(unit):
-    if unit == "fahrenheit":
-        fahrenheit(temperature)
-    elif unit == "celsius":
-        celsius(temperature)
-    elif unit == "kelvin":
-        kelvin(temperature)
-    else:
-        print("You misspelled something.")
+def fahrenheit_to_celsius(temp):
+    return (temp - 32) / 1.8
 
 
-def celsius(temp):
-    print(temp, "°C is: ")
-    print("*", temp * 9 / 5 + 32, "°F")
-    print("*", temp + 273.15, "K")
+def fahrenheit_to_kelvin(temp):
+    return (temp + 459.67) * 5 / 9
 
 
-def fahrenheit(temp):
-    print(temp, "°F is: ")
-    print("*", (temp - 32) / 1.8, "°C")
-    print("*", (temp + 459.67) * 5 / 9, "K")
+def celsius_to_fahrenheit(temp):
+    return temp * 9 / 5 + 32
 
 
-def kelvin(temp):
-    print(temp, "K is: ")
-    print("*", temp - 273.15, "°C")
-    print("*", temp * 9 / 5 - 459.67, "°F")
+def celsius_to_kelvin(temp):
+    return temp + 273.15
 
 
-user_input(unit)
+def kelvin_to_celsius(temp):
+    return temp - 273.15
+
+
+def kelvin_to_fahrenheit(temp):
+    return temp * 9 / 5 - 459.67
+
+
+if unit == "fahrenheit":
+    print(temperature, "°F is: ")
+    print("*", fahrenheit_to_celsius(temperature), "°C")
+    print("*", fahrenheit_to_kelvin(temperature), "K")
+elif unit == "celsius":
+    print(temperature, "°C is: ")
+    print("*", celsius_to_fahrenheit(temperature), "°F")
+    print("*", celsius_to_kelvin(temperature), "K")
+elif unit == "kelvin":
+    print(temperature, "K is: ")
+    print("*", kelvin_to_celsius(temperature), "°C")
+    print("*", kelvin_to_fahrenheit(temperature), "°F")
+else:
+    print("You misspelled something.")
